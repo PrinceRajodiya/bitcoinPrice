@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Price</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="price">
+            <img src="/images/Bitcoin.png" alt="Bitcoin">
+
+            <div class="info">
+                <p class="bitcoin-info">
+                    <strong>Founder :</strong>  Satoshi Nakamoto
+                </p>
+                <p class="bitcoin-info">
+                    <strong>Release Year :</strong>  2009 <br>
+                </p>
+                <p class="bitcoin-info">
+                    <strong>Market Cap :</strong> $ 451.76 Billion (As of March, 2023)
+                </p>
+
+            </div>
+
+            <p class="bitcoin-price" id="bitcoin-price">
+
+            </p>
+        </div>
+    </div>
+    <script>
+        async function load(){
+            let url = "https://api.coindesk.com/v1/bpi/currentprice.json";
+            let obj = await(await fetch(url)).json();
+
+            document.getElementById("bitcoin-price").innerHTML = "$ " + obj["bpi"]["USD"]["rate"];
+        }
+        load();
+    </script>
+
+</body>
+</html>
